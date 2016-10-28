@@ -23,7 +23,6 @@ var AccountManager = {
         Components.utils.import("resource://gre/modules/Preferences.jsm");
         Components.utils.import('resource://gre/modules/osfile.jsm');
         Components.utils.import('resource:///modules/mailServices.js');
-        // Components.utils.import('resource://gre/modules/WindowsRegistry.jsm');
 
         this.logger = Log.repository.getLogger('AccountManager');
         this.logger.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
@@ -32,22 +31,21 @@ var AccountManager = {
         Preferences.observe('extensions.account-manager', this, this);
 
         if (Preferences.get('extensions.account-manager.encoding', '').length === 0) {
-            var sysCodePage;
+            var sysCodePage = 'utf-8';
             try {
-                var wrk = Components.classes['@mozilla.org/windows-registry-key;1']
-                    .createInstance(Components.interfaces.nsIWindowsRegKey);
-                wrk.open(wrk.ROOT_KEY_LOCAL_MACHINE, 'SYSTEM\\CurrentControlSet', wrk.ACCESS_READ);
-                var subkey = wrk.openChild('Control\\Nls\\CodePage', wrk.ACCESS_READ);
-                var cp = subkey.readStringValue('ACP');
+                Components.utils.import('resource://gre/modules/WindowsRegistry.jsm');
+                var cp = WindowsRegistry.readRegKey(
+                    Components.interfaces.nsIWindowsRegKey.ROOT_KEY_LOCAL_MACHINE,
+                    'SYSTEM\\CurrentControlSet\\Control\\Nls\\CodePage',
+                    'ACP'
+                );
                 if (cp === '866')
                     cp = 'ibm866';
                 else if (cp.match(/^[0-9]{3,4}$/))
                     cp = 'windows-' + cp;
                 sysCodePage = cp;
-                subkey.close();
-                wrk.close();
             } catch (e) {
-                sysCodePage = 'utf-8';
+                this.logger.debug('Unable to read default codepage form the Windows registry, falling back to utf-8');
             }
             Preferences.set('extensions.account-manager.encoding', sysCodePage);
         }
