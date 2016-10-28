@@ -3,4 +3,7 @@ pref('extensions.account-manager.encoding', '');
 pref('extensions.account-manager.header', true);
 pref('extensions.account-manager.interval', 1);
 pref('extensions.account-manager.dept', 'all');
-pref('extensions.account-manager.no-remove', true);
+pref('extensions.account-manager.keep-accounts', true);
+pref('extensions.account-manager.keep-smtp', true);
+pref('extensions.account-manager.disable-sync', true);
+pref('extensions.account-manager.disable-junk', true);

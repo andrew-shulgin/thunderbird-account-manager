@@ -3,7 +3,7 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>account-manager@andrew.shulgin</em:id>
         <em:name>Account Manager</em:name>
-        <em:version>0.2.1</em:version>
+        <em:version>0.2.2</em:version>
         <em:creator>Andrew Shulgin &lt;andrewshulginua@gmail.com&gt;</em:creator>
         <em:optionsURL>chrome://account-manager/content/options.xul</em:optionsURL>
         <em:targetApplication>

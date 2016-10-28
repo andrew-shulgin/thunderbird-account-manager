@@ -10,11 +10,14 @@
             <preference id="pref_header" name="extensions.account-manager.header" type="bool"/>
             <preference id="pref_interval" name="extensions.account-manager.interval" type="int"/>
             <preference id="pref_dept" name="extensions.account-manager.dept" type="string"/>
-            <preference id="pref_no-remove" name="extensions.account-manager.no-remove" type="bool"/>
+            <preference id="pref_keep-accounts" name="extensions.account-manager.keep-accounts" type="bool"/>
+            <preference id="pref_keep-smtp" name="extensions.account-manager.keep-smtp" type="bool"/>
+            <preference id="pref_disable-sync" name="extensions.account-manager.disable-sync" type="bool"/>
+            <preference id="pref_disable-junk" name="extensions.account-manager.disable-junk" type="bool"/>
         </preferences>
         <hbox align="center">
             <label control="symbol" value="CSV"/>
-            <textbox flex="1" preference="pref_csv"/>
+            <textbox flex="1" preference="pref_csv" value=""/>
             <button id="choose-csv" label="Choose"/>
         </hbox>
         <hbox align="center">
@@ -67,12 +70,10 @@
             </menulist>
         </hbox>
         <hbox align="center">
-            <label flex="1" control="symbol" value="Refresh interval"/>
-            <textbox preference="pref_interval" type="number" size="4" min="1" max="3600" maxlength="4"/>
-            <description>sec</description>
             <checkbox flex="1" preference="pref_header" label="Header row" checked="true"/>
-        </hbox>
-        <hbox align="center">
+            <label flex="1" control="symbol" value="Refresh interval"/>
+            <textbox preference="pref_interval" type="number" size="4" min="1" max="3600" maxlength="4" value="1"/>
+            <description>sec</description>
         </hbox>
         <hbox align="center">
             <label control="symbol" value="Department"/>
@@ -85,7 +86,16 @@
             </menulist>
         </hbox>
         <hbox align="center">
-            <checkbox flex="1" preference="pref_no-remove" label="Do not delete accounts" checked="true"/>
+            <checkbox flex="1" preference="pref_keep-accounts" label="Do not remove accounts" checked="true"/>
+        </hbox>
+        <hbox align="center">
+            <checkbox flex="1" preference="pref_keep-smtp" label="Do not remove outgoing servers" checked="true"/>
+        </hbox>
+        <hbox align="center">
+            <checkbox flex="1" preference="pref_disable-sync" label="Do not store messages" checked="true"/>
+        </hbox>
+        <hbox align="center">
+            <checkbox flex="1" preference="pref_disable-junk" label="Disable anti-spam" checked="true"/>
         </hbox>
     </prefpane>
 </prefwindow>
