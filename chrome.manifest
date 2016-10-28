@@ -1,0 +1,2 @@
+content account-manager chrome/content/
+overlay chrome://messenger/content/messenger.xul chrome://account-manager/content/account-manager.xul

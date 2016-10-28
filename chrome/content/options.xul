@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<prefwindow id="account-manager-preferences" title="Account Manager Preferences"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script type="application/javascript" src="chrome://account-manager/content/options.js"/>
+    <prefpane id="account-manager-preferences-pane" label="Account Manager Preferences">
+        <preferences>
+            <preference id="pref_csv" name="extensions.account-manager.csv" type="string"/>
+            <preference id="pref_encoding" name="extensions.account-manager.encoding" type="string"/>
+            <preference id="pref_header" name="extensions.account-manager.header" type="bool"/>
+            <preference id="pref_interval" name="extensions.account-manager.interval" type="int"/>
+            <preference id="pref_dept" name="extensions.account-manager.dept" type="string"/>
+            <preference id="pref_no-remove" name="extensions.account-manager.no-remove" type="bool"/>
+        </preferences>
+        <hbox align="center">
+            <label control="symbol" value="CSV"/>
+            <textbox flex="1" preference="pref_csv"/>
+            <button id="choose-csv" label="Choose"/>
+        </hbox>
+        <hbox align="center">
+            <label control="symbol" value="Encoding"/>
+            <menulist preference="pref_encoding" flex="1" editable="true" value="">
+                <menupopup>
+                    <menuitem label="utf-8"/>
+                    <menuitem label="ibm866"/>
+                    <menuitem label="iso-8859-2"/>
+                    <menuitem label="iso-8859-3"/>
+                    <menuitem label="iso-8859-4"/>
+                    <menuitem label="iso-8859-5"/>
+                    <menuitem label="iso-8859-6"/>
+                    <menuitem label="iso-8859-7"/>
+                    <menuitem label="iso-8859-8"/>
+                    <menuitem label="iso-8859-8i"/>
+                    <menuitem label="iso-8859-10"/>
+                    <menuitem label="iso-8859-13"/>
+                    <menuitem label="iso-8859-14"/>
+                    <menuitem label="iso-8859-15"/>
+                    <menuitem label="iso-8859-16"/>
+                    <menuitem label="iso-8859-4"/>
+                    <menuitem label="koi8-r"/>
+                    <menuitem label="koi8-u"/>
+                    <menuitem label="macintosh"/>
+                    <menuitem label="windows-874"/>
+                    <menuitem label="windows-1250"/>
+                    <menuitem label="windows-1251"/>
+                    <menuitem label="windows-1252"/>
+                    <menuitem label="windows-1253"/>
+                    <menuitem label="windows-1254"/>
+                    <menuitem label="windows-1255"/>
+                    <menuitem label="windows-1256"/>
+                    <menuitem label="windows-1257"/>
+                    <menuitem label="windows-1258"/>
+                    <menuitem label="x-mac-cyrillic"/>
+                    <menuitem label="gbk"/>
+                    <menuitem label="gb18030"/>
+                    <menuitem label="hz-gb-2312"/>
+                    <menuitem label="big5"/>
+                    <menuitem label="euc-jp"/>
+                    <menuitem label="iso-2022-jp"/>
+                    <menuitem label="shift-jis"/>
+                    <menuitem label="windows-949"/>
+                    <menuitem label="iso-2022-kr"/>
+                    <menuitem label="utf-16be"/>
+                    <menuitem label="utf-16le"/>
+                    <menuitem label="iso-2022-cn"/>
+                </menupopup>
+            </menulist>
+        </hbox>
+        <hbox align="center">
+            <label flex="1" control="symbol" value="Refresh interval"/>
+            <textbox preference="pref_interval" type="number" size="4" min="1" max="3600" maxlength="4"/>
+            <description>sec</description>
+            <checkbox flex="1" preference="pref_header" label="Header row" checked="true"/>
+        </hbox>
+        <hbox align="center">
+        </hbox>
+        <hbox align="center">
+            <label control="symbol" value="Department"/>
+            <menulist preference="pref_dept" flex="1" editable="true" value="all">
+                <menupopup>
+                    <menuitem label="all"/>
+                    <menuitem label="acct"/>
+                    <menuitem label="sale"/>
+                </menupopup>
+            </menulist>
+        </hbox>
+        <hbox align="center">
+            <checkbox flex="1" preference="pref_no-remove" label="Do not delete accounts" checked="true"/>
+        </hbox>
+    </prefpane>
+</prefwindow>
